@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 38 - Clousure JS</title>
+</head>
+<body>
+    <script>
+        /* Un clousure es básicamente es un función que recuerda el estado de las variables al momento de ser invocada
+            y conserva el estado a traves de reiteradas ejecuciones. Un aspecto fundamental de los clousure es que son
+            funciones que retornan otras funciones*/
+
+            //Se crea una función externa contenedora que retorna un función
+            function crearSaludo(finDeFrase) {
+                return function (nombre){ //Función interna que representa el clousure
+                    console.log(`Hola ${nombre} ${finDeFrase}`);
+                }
+            }
+
+            const saludoColombia = crearSaludo('Parce');
+            const saludoArgentina = crearSaludo('Che');
+            const saludoMexico = crearSaludo('Cabron');
+
+            //Capacidad de recordar el estado de las variables de la función contenedora
+            saludoColombia('Anibal');
+            saludoArgentina('Anibal');
+            saludoMexico('Anibal');
+        
+        </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 39 - Estructura de datos inmutables</title>
+</head>
+<body>
+    <script>
+        /* Las estructuras de datos inmutables forman parte de los principios de la programación funcional y
+            nos permiten evitar tener efectos colaterales en los datos. En otras palabras que hayan modificaciones 
+            en las variables sin nuestro consentimiento produciendo comportamientos inesperados en el programa */
+            
+        //Definición del objeto Anibal
+        const anibal = {
+            nombre: 'Anibal',
+            apellido: 'Ortega',
+            edad: 28
+        }
+        //Definición de la función que aumenta la edad en 1 cada vez que es llamada
+        //En este caso la función esta modificando el objeto Anibal 
+        const cumpleanos = function cumpleanos(persona){
+            persona = persona.edad++
+        }
+
+        //Otra forma de escribir la función como Arrow Function
+        //En este caso la función esta modificando el objeto Anibal 
+        const cumpleanosArrowFunction = persona => persona.edad++;
+
+        //Definición de una funcion inmutable
+        const cumpleanosInmutable = persona => ({
+            ...persona, //Creamos otro objeto en memoria con el nuevo dato
+            edad: persona.edad + 1
+        })
+        </script>
+</body>
+</html>

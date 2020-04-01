@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 40 - Cambiando el contexto de una función</title>
+</head>
+<body>
+    <script>
+        /* El contexto (o Alcance) de una función es por general, windows. Asi que en ciertos casos, cuando intentamos referirnos
+            a this en alguna parte del código es posible que tengamos un comportamiento inesperado, porque quizas el contexto
+            no sea el esperado 
+            
+            Existen al menos tres maneras de cambiar el contexto de una función
+            
+            - Usando el metodo .bind() enviamos la referencia a la función sin ejecutarla, pasando el contexto como parametro
+            
+            - Usando el metodo .call() ejecutamos inmediatamente la función con el contexto indicado
+            
+            - Usando el metodo .apply() es similar a .call pero los parametros adicionales se pasan como un arreglo de valores*/
+
+            const anibal = {
+                nombre: 'Anibal',
+                apellido: 'Ortega'
+            }
+
+            const yesika = {
+                nombre: 'Yesika',
+                apellido: 'Perez'
+            }
+
+            function saludar(saludo) {
+                console.log(`${saludo}, mi nombre es ${this.nombre}`);
+            }
+            //Pasamos a la variable saludar el contexto anibal como this
+            //Cambiamos el contexto de la función
+            //La función .bind() no ejecuta la función
+            const saludarAAnibal = saludar.bind(anibal, 'Hola Che');
+            const saludarAYesika = saludar.bind(yesika, 'Hola Che');
+
+            //Ejecutamos un setTimeout con la referencia al objeto Anibal 
+            setTimeout(saludar.bind(anibal, 'Hola Che'), 1000);
+
+            // .call() y .apply ejecutan la función inmediatamewnte
+            saludar.call(anibal, 'Hola Way');
+            saludar.apply(anibal, ['Hi!']);
+        
+        </script>
+</body>
+</html>

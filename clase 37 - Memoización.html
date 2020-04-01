@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 37 - Memorización: Ahorro de computo</title>
+</head>
+<body>
+    <script>
+    /*  La memoización es una técnica de programación que nos permite ahorrar computo o procesamiento en JS
+        Al ir almacenando el resultado invariable de una función para que no sea necesario volver a ejecutar 
+        todas las instrucciones de nuevo, cuando se vuelve a llamar con los mismos parámetros, es similar usar memoria cache */
+        
+        /* Calcular el factorial de un numero n
+            El factorial del numero 6 de calcula de la siguiente manera
+            !6 = 6x5x4x3x2x1
+            Nuestro caso base para realizarlo de forma recursiva es cuando n llegue a 1 
+            !12 = 12x11x10x11x10x9x8x7x!6*/
+        
+        //Funcion recursiva que calcula el factorial de un numero 
+        function factorial(n) {
+            //Se valida si se encuentra creada una cache, si no se crea de forma vacia
+            if(!this.cache){
+                this.cache = {}
+            }
+            debugger
+            //si existe la cache se retorna el valor
+            if(this.cache[n]){
+                return this.cache[n];
+            }
+            if(n===1){
+                return 1
+            }
+            //Llamado recursivo a la función para calcular el factorial, se asigna el resultado en la cache
+            this.cache[n] = n * factorial(n-1);
+            debugger
+            return this.cache[n];
+        }
+
+    </script>
+    
+</body>
+</html>
